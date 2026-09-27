@@ -1,0 +1,41 @@
+{
+  "actorSpecification": 1,
+  "name": "all-maps-data-scraper",
+  "title": "All Maps Data Scraper",
+  "description": "Extract structured business and location listings from Google Maps and Bing Maps in one Actor.",
+  "version": "1.0",
+  "buildTag": "latest",
+  "input": "./input_schema.json",
+  "dockerfile": "../Dockerfile",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "views": {
+        "overview": {
+          "title": "Business listings",
+          "transformation": {
+            "fields": [
+              "provider",
+              "searchQuery",
+              "title",
+              "category",
+              "address",
+              "phone",
+              "website",
+              "rating",
+              "reviewsCount",
+              "latitude",
+              "longitude",
+              "hours",
+              "mapUrl",
+              "scrapedAt"
+            ]
+          },
+          "display": {
+            "component": "table"
+          }
+        }
+      }
+    }
+  }
+}
