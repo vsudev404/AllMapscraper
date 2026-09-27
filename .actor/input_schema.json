@@ -1,0 +1,61 @@
+{
+  "title": "All Maps Data Scraper input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "provider": {
+      "title": "Map provider",
+      "type": "string",
+      "description": "Choose Google Maps, Bing Maps, or both.",
+      "editor": "select",
+      "enum": ["google", "bing", "both"],
+      "default": "google"
+    },
+    "searchQueries": {
+      "title": "Search queries",
+      "type": "array",
+      "description": "One search term per line, such as dentists in Delhi or coffee shops near Times Square, New York.",
+      "editor": "stringList",
+      "prefill": ["restaurants in Connaught Place, Delhi"]
+    },
+    "maxResultsPerQuery": {
+      "title": "Max results per query",
+      "type": "integer",
+      "description": "Maximum listings to collect for each query and provider.",
+      "default": 60,
+      "minimum": 1
+    },
+    "scrapeDetails": {
+      "title": "Open each Google listing for full details",
+      "type": "boolean",
+      "description": "Open Google listings to collect richer details. Slower but more complete.",
+      "default": true
+    },
+    "language": {
+      "title": "Language / locale",
+      "type": "string",
+      "description": "Language code such as en, hi, or es.",
+      "default": "en",
+      "editor": "textfield"
+    },
+    "proxyConfiguration": {
+      "title": "Proxy configuration",
+      "type": "object",
+      "description": "Apify proxy configuration. Residential proxies may be useful for map sites that rate-limit automated traffic.",
+      "editor": "proxy",
+      "default": {
+        "useApifyProxy": true,
+        "apifyProxyGroups": ["RESIDENTIAL"]
+      }
+    },
+    "maxConcurrency": {
+      "title": "Max concurrency",
+      "type": "integer",
+      "description": "Number of browser pages running in parallel.",
+      "default": 2,
+      "minimum": 1,
+      "maximum": 10
+    }
+  },
+  "required": ["provider", "searchQueries"]
+}
